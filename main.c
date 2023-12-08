@@ -49,7 +49,7 @@ int main()
 		Op num1, num2;
 		num1 = translate(p1);
 		num2 = translate(p3);
-		if (num1.type != num2.type)
+		if (strcmp(num1.type, num2.type) != 0)
 		{
 			printf("Error: не совпадают основания СС\n");
 			exit(1);
@@ -58,9 +58,13 @@ int main()
 		printf("%ld %s\n", num2.modul, num2.type);
 
 	}
-	char* p3 = strtok(NULL, " ");
-	Op num2;
-
+	else
+	{
+		char* p3 = strtok(NULL, " ");
+		Op num2;
+		num2 = translate(p3);
+		printf("%ld %s\n", num2.modul, num2.type);
+	}
 
 	return 0;
 }
