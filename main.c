@@ -1,6 +1,9 @@
 #include<stdio.h>
 #include<string.h>
 #include<stdlib.h>
+#include"bin.h"
+#include"oct.h"
+#include"hex.h"
 
 typedef struct
 {
@@ -14,7 +17,6 @@ Op translate(char* str)
 	if (str[0] == '~')
 	{
 		sscanf(str, "~%s", str);
-		printf("%s\n", str);
 		translate(str);
 	}
 	if (str[0] == '0')
@@ -44,11 +46,13 @@ int main()
 	printf("Введите выражение\n");
 	fgets(buffer, 256, stdin);
 	char* p1 = strtok(buffer, " ");
+	Op num1, num2;
+	char operation;
 	if (p1[0] != '~')
 	{
 		char* p2 = strtok(NULL, " ");
 		char* p3 = strtok(NULL, " ");
-		Op num1, num2;
+		operation = p2[0];
 		num1 = translate(p1);
 		num2 = translate(p3);
 		if (strcmp(num1.type, num2.type) != 0)
@@ -56,16 +60,21 @@ int main()
 			printf("Error: не совпадают основания СС\n");
 			exit(1);
 		}
-		printf("%ld %s\n", num1.modul, num1.type);
-		printf("%ld %s\n", num2.modul, num2.type);
 
 	}
 	else
 	{
-		Op num1;
 		num1 = translate(p1);
-		printf("%ld %s\n", num1.modul, num1.type);
+		num2.modul = 0;
+		operation = '~';
 	}
+
+	if (strcmp(num1.type, "bin") == 0)
+		bin_operation(num1.modul, num2.modul, operation);
+	if (strcmp(num1.type, "oct") == 0)
+		oct_operation(num1.modul, num2.modul, operation);
+	if (strcmp(num1.type, "hex") == 0)
+		hex_operation(num1.modul, num2.modul, operation);
 
 	return 0;
 }
