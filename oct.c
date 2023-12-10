@@ -25,8 +25,8 @@ void oct_operation(long num1, long num2, char operation)
 		}
 		case '%':
 		{
-			double tmp = (float)num1 / num2;
-			printf("%o (%lf)\n", tmp, tmp);
+			long tmp = num1 % num2;
+			printf("%o (%ld)\n", tmp, tmp);
 			break;
 		}
 		case '&':

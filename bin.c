@@ -25,8 +25,8 @@ void bin_operation(long num1, long num2, char operation)
 		}
 		case '%':
 		{
-			double tmp = (float)num1 / num2;
-			printf("%lf (%lf)\n", tmp, tmp);
+			long tmp = num1 % num2;
+			printf("%lf (%ld)\n", tmp, tmp);
 			break;
 		}
 		case '&':
