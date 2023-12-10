@@ -19,7 +19,7 @@ Op translate(char* str)
 		sscanf(str, "~%s", str);
 		translate(str);
 	}
-	if (str[0] == '0')
+	if ((str[0] == '0') && (str[1] != '\0') && (str[1] != '\n'))
 	{
 		if (str[1] == 'x')
 		{
