@@ -53,8 +53,17 @@ int main()
 		char* p2 = strtok(NULL, " ");
 		char* p3 = strtok(NULL, " ");
 		operation = p2[0];
+		if (operation == '&' || operation == '|' || operation == '^')
+		{
+			if ((p1[0] == '-') || (p3[0] == '-'))
+			{
+				printf("Error: отрицательные значения\n");
+				exit(1);
+			}
+		}
 		num1 = translate(p1);
 		num2 = translate(p3);
+
 		if (strcmp(num1.type, num2.type) != 0)
 		{
 			printf("Error: не совпадают основания СС\n");
