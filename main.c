@@ -23,18 +23,18 @@ Op translate(char* str)
 	{
 		if (str[1] == 'x')
 		{
-			tmp.modul = strtol(str, NULL, 16);
+			tmp.modul = hex_read(str);
 			sprintf(tmp.type, "%s", "hex");
 		}
 		else
 		{
-			tmp.modul = strtol(str, NULL, 8);
+			tmp.modul = oct_read(str);
 			sprintf(tmp.type, "%s", "oct");
 		}
 	}
 	else
 	{
-		tmp.modul = strtol(str, NULL, 2);
+		tmp.modul = bin_read(str);
 		sprintf(tmp.type, "%s", "bin");
 	}
 	return tmp;
