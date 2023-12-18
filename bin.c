@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 #include<math.h>
 #include"bin.h"
 
@@ -21,6 +22,11 @@ long bin_read(char* str)
 	for (int i = len; i >= 0; i--)
 	{
 		sprintf(buffer, "%c", str[i]);
+		if (atoi(buffer) > 1 || !(isdigit(str[i])))
+		{
+			printf("Error!\n");
+			exit(1);
+		}
 		s += atoi(buffer) * pow(2, count++);
 	}
 	if (sign == '-')

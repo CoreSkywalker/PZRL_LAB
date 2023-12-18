@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 #include<math.h>
 #include"hex.h"
 
@@ -63,6 +64,11 @@ long hex_read(char* str)
 			{
 				sprintf(buffer, "%c", str[i]);
 			}
+		}
+		if (str[i] > 'f' || !(isalnum(str[i])))
+		{
+			printf("Error!\n");
+			exit(1);
 		}
 		s += atoi(buffer) * pow(16, count++);
 	}

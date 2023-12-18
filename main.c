@@ -46,9 +46,13 @@ int main()
 	printf("Введите выражение\n");
 	fgets(buffer, 256, stdin);
 	char* p1 = strtok(buffer, " ");
-	Op num1, num2;
+	int tilda = 1;
+	if (p1[0] == '~')
+		tilda = 0;
+	Op num1 = translate(p1);
+	Op num2;
 	char operation;
-	if (p1[0] != '~')
+	if (tilda)
 	{
 		char* p2 = strtok(NULL, " ");
 		char* p3 = strtok(NULL, " ");
@@ -61,7 +65,6 @@ int main()
 				exit(1);
 			}
 		}
-		num1 = translate(p1);
 		num2 = translate(p3);
 
 		if (strcmp(num1.type, num2.type) != 0)
@@ -73,7 +76,6 @@ int main()
 	}
 	else
 	{
-		num1 = translate(p1);
 		num2.modul = 0;
 		operation = '~';
 	}

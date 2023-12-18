@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#include<ctype.h>
 #include<math.h>
 #include"oct.h"
 
@@ -22,6 +23,12 @@ long oct_read(char* str)
 	for (int i = len; i >= 0; i--)
 	{
 		sprintf(buffer, "%c", str[i]);
+		if (atoi(buffer) > 7 || !(isdigit(str[i])))
+		{
+			printf("Error!\n");
+			exit(1);
+		}
+	
 		s += atoi(buffer) * pow(8, count++);
 	}
 	if (sign == '-')
@@ -38,7 +45,7 @@ void oct_print(long n)
 		printf("-");
 		n = -n;
 	}
-	printf("%o (%ld)\n", n, tmp);
+	printf("0%o (%ld)\n", n, tmp);
 }
 
 void oct_operation(long num1, long num2, char operation)
