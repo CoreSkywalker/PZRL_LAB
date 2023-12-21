@@ -6,13 +6,13 @@ clean:
 	rm a.out *.o
 run: a.out
 	./a.out
-main.o: 
+main.o: main.c
 	gcc main.c -c
-hex.o:
+hex.o: hex.c
 	gcc hex.c -c -lm
-oct.o: 
+oct.o: oct.c
 	gcc oct.c -c -lm
-bin.o:
+bin.o: bin.c
 	gcc bin.c -c -lm
 a.out: $(reqso)
 	gcc $(reqso)

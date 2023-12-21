@@ -37,13 +37,14 @@ long bin_read(char* str)
 void bin_print(long n)
 {
 	int a[50];
+	a[0] = 0;
 	long tmp = n;
 	if (n < 0)
 	{
 		printf("-");
 		n = -n;
 	}
-	int index;
+	int index = 0;
 	for (int i = 0; n > 0; i++)
 	{
 		a[i] = n % 2;
@@ -81,6 +82,11 @@ void bin_operation(long num1, long num2, char operation)
 		}
 		case '%':
 		{
+			if (num2 == 0)
+			{
+				printf("Zero division\n");
+				exit(1);
+			}
 			long tmp = num1 % num2;
 			bin_print(tmp);
 			break;

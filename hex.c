@@ -114,6 +114,12 @@ void hex_operation(long num1, long num2, char operation)
 		}
 		case '%':
 		{
+			if (num2 == 0)
+			{
+				printf("Zero division\n");
+				exit(1);
+			}
+
 			long tmp = num1 % num2;
 			hex_print(tmp);
 			break;

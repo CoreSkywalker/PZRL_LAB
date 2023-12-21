@@ -50,8 +50,8 @@ int main()
 	if (p1[0] == '~')
 		tilda = 0;
 	Op num1 = translate(p1);
-	Op num2;
 	char operation;
+	Op num2;
 	if (tilda)
 	{
 		char* p2 = strtok(NULL, " ");
@@ -59,7 +59,7 @@ int main()
 		operation = p2[0];
 		if (operation == '&' || operation == '|' || operation == '^')
 		{
-			if ((p1[0] == '-') || (p3[0] == '-'))
+			if ((num1.modul < 0) || (p3[0] == '-'))
 			{
 				printf("Error: отрицательные значения\n");
 				exit(1);
